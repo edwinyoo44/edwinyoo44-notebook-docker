@@ -1,4 +1,4 @@
-FROM quay.io/jupyter/tensorflow-notebook:cuda-feeb4e78ef4d
+FROM quay.io/jupyter/tensorflow-notebook:latest
 
 RUN python3 -m pip install --no-cache-dir \
     jupyterlab-language-pack-zh-TW
