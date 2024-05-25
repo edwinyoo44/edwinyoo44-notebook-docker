@@ -1,11 +1,10 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow
-name: Build Docker Image
+name: Build Docker Image Dockerfile.base
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    paths:
+      - '**/Dockerfile.base'
 
 env:
   REGISTRY: ghcr.io
@@ -45,14 +44,3 @@ jobs:
           tags: |
             ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:base-${{ env.GITHUB_REF_NAME }}
             ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:base-latest
-
-      - name: Build And Push pytorch-cuda
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: Dockerfile.pytorch-cuda
-          push: true
-          platforms: linux/amd64,linux/arm64
-          tags: |
-            ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:pytorch-cuda-${{ env.GITHUB_REF_NAME }}
-            ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:pytorch-cuda-latest
