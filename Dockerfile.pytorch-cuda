@@ -25,9 +25,13 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 
 ######
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    nvidia-cuda-toolkit
-
+# Install JupyterLab language pack for Traditional Chinese
 RUN pip install --no-cache-dir \
     jupyterlab-language-pack-zh-TW
+
+# Update package lists and install NVIDIA CUDA Toolkit
+USER root
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends nvidia-cuda-toolkit && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
