@@ -1,4 +1,4 @@
-FROM quay.io/jupyter/tensorflow-notebook:latest
+FROM quay.io/jupyter/pytorch-notebook:cuda12-python-3.11.8
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
