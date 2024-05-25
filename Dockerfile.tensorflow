@@ -1,4 +1,8 @@
 FROM quay.io/jupyter/tensorflow-notebook:latest
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    nvidia-cuda-toolkit
+
 RUN python3 -m pip install --no-cache-dir \
     jupyterlab-language-pack-zh-TW
