@@ -1,4 +1,4 @@
 FROM quay.io/jupyter/pytorch-notebook:cuda12-latest
 
 RUN python3 -m pip install --no-cache-dir \
-    jupyterlab-language-pack-zh-TW
+    jupyterlab-language-pack-zh-TW 
