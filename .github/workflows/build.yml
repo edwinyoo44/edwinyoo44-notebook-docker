@@ -46,13 +46,13 @@ jobs:
             ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:base-${{ env.GITHUB_REF_NAME }}
             ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:base-latest
 
-      - name: Build And Push tensorflow
+      - name: Build And Push pytorch-cuda
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: Dockerfile.tensorflow
+          file: Dockerfile.pytorch-cuda
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:tensorflow-${{ env.GITHUB_REF_NAME }}
-            ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:tensorflow-latest
+            ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:pytorch-cuda-${{ env.GITHUB_REF_NAME }}
+            ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:pytorch-cuda-latest
