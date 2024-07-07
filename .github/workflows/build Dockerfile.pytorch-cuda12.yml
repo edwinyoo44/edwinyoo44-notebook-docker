@@ -41,7 +41,7 @@ jobs:
           context: .
           file: Dockerfile.pytorch-cuda12
           push: true
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           tags: |
             ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:pytorch-cuda12-${{ env.GITHUB_REF_NAME }}
             ghcr.io/${{ env.GITHUB_REPOSITORY_OWNER_PART }}/${{ env.GITHUB_REPOSITORY_NAME_PART }}:pytorch-cuda12-latest
