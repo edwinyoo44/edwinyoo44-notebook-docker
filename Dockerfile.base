@@ -1,8 +1,17 @@
 FROM quay.io/jupyter/base-notebook:latest
+# 環境變數
 ENV LANG zh_TW.UTF-8
+
+# 切換到 root 用戶以進行安裝
 USER root
 
+# 安裝 JupyterLab 繁體中文語言包
 RUN python3 -m pip install --no-cache-dir \
     jupyterlab-language-pack-zh-TW
 
+# 切換回原始用戶
 USER ${NB_UID}
+
+# 產生並修改 Jupyter Notebook 設定檔
+RUN jupyter notebook --generate-config && \
+    echo "import os\nos.environ['LANG'] = 'zh_TW.UTF-8'" >> /home/jovyan/.jupyter/jupyter_notebook_config.py
