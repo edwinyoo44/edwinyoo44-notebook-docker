@@ -1,4 +1,5 @@
 FROM quay.io/jupyter/base-notebook:latest
+ENV LANG zh_TW.UTF-8
 USER root
 
 RUN python3 -m pip install --no-cache-dir \
