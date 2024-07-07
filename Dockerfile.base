@@ -1,4 +1,7 @@
 FROM quay.io/jupyter/base-notebook:latest
+USER root
 
 RUN python3 -m pip install --no-cache-dir \
     jupyterlab-language-pack-zh-TW
+
+USER ${NB_UID}
